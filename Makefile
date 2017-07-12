@@ -33,7 +33,7 @@ release: node_modules
 package: clean release
 	rm -Rf node_modules
 	yarn install --production
-	tar cfz `git describe`.tar.xz dist/ index.html config.js node_modules
+	tar cfz `git describe`.tar.gz dist/ index.html config.js node_modules
 
 .PHONY: clean
 clean:

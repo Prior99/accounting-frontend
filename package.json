@@ -4,8 +4,7 @@
   "scripts": {
     "prebuild": "rm -rf dist/",
     "build": "webpack",
-    "prebuild:production": "rm -rf dist/",
-    "build:production": "webpack --config webpack.config-production.js",
+    "build:release": "webpack --config webpack.config-release.js",
     "start": "webpack-dev-server",
     "lint:src": "tslint --format stylish --type-check --project tsconfig.json",
     "lint:style": "stylelint --allow-empty-input src/**/*.scss",

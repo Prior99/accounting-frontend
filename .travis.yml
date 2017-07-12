@@ -1,19 +1,28 @@
 language: node_js
-
 node_js:
   - '8'
 
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install make -qq
+  - sudo apt-get install make git -qq
   - npm install -g yarn
 
 install:
   - yarn install
 
-before_script:
+script:
   - make lint
   - make test
 
-script:
-  - make production
+before_deploy:
+  - make package
+
+deploy:
+  provider: releases
+  api_key:
+    secure: ei8+TJTxGJP5Q4RJFNVR/ej3ek35EEo8b7RCSes2MxBz/H8sHKoJWgAPuoo9l4iuve9ZCnDtV2lWCVivjWjJLr7bjPIVCHpWt7txhMCwa5SZ4/sq/QOhcRpyBZfWf2x+w8nTMd433bAW50ObcRk5gxUGXDgikBsnOUfBcRmxNPms1+uyPVEb0DaXKbE7NaBLNSiZ5RU6FviZF+OsmbMm7yMIcXZLiwWaxhH95uoW5djMPcMaC+EHopYN02wyfIinXQiUfwILUsqtPjirM6pUzBOwswHs14V2eh64ZMe4szvTXRl6FqIMVUqJt7rem8nQfCqGW1tcBQuqzRPO/eb7KjBwGyYxBoNHDBYL55DTPqmse3FZrjrCqZ6rmrUrsrZRSgcUYw6559dqLUjJY4N8QK79R6jaY2rhiY4sDb5HJ+s1IJGGdIctNX4ahCq059cLz0aE7+jTunNllQwJvA39K8o3bzogWVbtt5I1GAmU15S1utFWcwuF5YpTM2iTqmTEj0URQi35rUYmfYzUlpC39nFaESq9or1gG4ffNcxWDLW4/DaMzA8BPeXNnZ8OdPFCMJclibvAHAlh+nw7YI4IIgZTBd12cwEYbY0r/VG+15kJo9FvuZ7hAimVMo6Eetw3hEl3pZ7p4iB7kxnWL0YbBm6vxP49j0yCmfDvBwCdfPg=
+  file: "`git describe`.tar.xz"
+  on:
+    repo: Prior99/accounting-frontend
+    tags: true
+  skip_cleanup: true

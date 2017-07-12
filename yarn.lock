@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@types/ramda@^0.24.3":
+  version "0.24.3"
+  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.24.3.tgz#5580025384ce940928d4043b543bf39f9f1e616f"
+
 "@types/react-dom@^15.5.1":
   version "15.5.1"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-15.5.1.tgz#f3c3e14c682785923c7d64583537df319442dec1"
@@ -3724,6 +3728,10 @@ querystringify@0.0.x:
 querystringify@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-1.0.0.tgz#6286242112c5b712fa654e526652bf6a13ff05cb"
+
+ramda@^0.24.1:
+  version "0.24.1"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.24.1.tgz#c3b7755197f35b8dc3502228262c4c91ddb6b857"
 
 randomatic@^1.1.3:
   version "1.1.7"

@@ -9,3 +9,9 @@ lint:
 
 run:
 	yarn start
+
+test:
+	yarn test
+
+production:
+	yarn run build:production

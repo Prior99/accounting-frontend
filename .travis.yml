@@ -1,0 +1,19 @@
+language: node_js
+
+node_js:
+  - '8'
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install make -qq
+  - npm install -g yarn
+
+install:
+  - yarn install
+
+before_script:
+  - make lint
+  - make test
+
+script:
+  - make production

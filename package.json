@@ -8,7 +8,8 @@
     "build:production": "webpack --config webpack.config-production.js",
     "start": "webpack-dev-server",
     "lint:src": "tslint --format stylish --type-check --project tsconfig.json",
-    "lint:style": "stylelint --allow-empty-input src/**/*.scss"
+    "lint:style": "stylelint --allow-empty-input src/**/*.scss",
+    "test": "true"
   },
   "description": "Frontend for the accounting backend application.",
   "main": "src/index.tsx",

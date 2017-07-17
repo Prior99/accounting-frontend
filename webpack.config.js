@@ -1,6 +1,8 @@
 const Webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const GitRevisionPlugin = require("git-revision-webpack-plugin");
+const path = require('path');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const extractCSS = new ExtractTextPlugin('[name].css');
 const gitRevision = new GitRevisionPlugin({ lightweightTags: true });
@@ -32,27 +34,47 @@ module.exports = {
             },
             {
                 test: /\.tsx?/,
-                loader: "awesome-typescript-loader"
+                loader: "awesome-typescript-loader",
+                exclude: [/__tests__/]
             },
             {
-                test: /\.s?css$/,
-                loader: extractCSS.extract([
-                    {
-                        loader: "css-loader",
-                        query: {
-                            modules: true,
-                            importLoaders: 1,
-                            localIdentName: '[name]_[local]_[hash:base64:5]',
-                            sourceMap: true
+                test: /\.css$/,
+                loader: extractCSS.extract({
+                    use: [
+                        {
+                            loader: "css-loader",
+                            options: { sourceMap: true }
+                        },
+                        {
+                            loader: "resolve-url-loader"
                         }
-                    },
-                    {
-                        loader: "postcss-loader",
-                        query: {
-                            sourceMap: true
+                    ]
+                })
+            },
+            {
+                test: /\.(scss)$/,
+                loader: extractCSS.extract({
+                    use: [
+                        {
+                            loader: "css-loader",
+                            options: {
+                                modules: true,
+                                importLoaders: 1,
+                                localIdentName: '[name]_[local]_[hash:base64:5]',
+                                sourceMap: true
+                            }
+                        },
+                        {
+                            loader: "resolve-url-loader"
+                        },
+                        {
+                            loader: "sass-loader",
+                            options: {
+                                sourceMap: true
+                            }
                         }
-                    }
-                ])
+                    ]
+                })
             }
         ]
     },
@@ -63,7 +85,7 @@ module.exports = {
             rewrites: [
                 { from: /./, to: '/' }
             ]
-        },
+        }
     },
     plugins: [
         extractCSS,
@@ -71,6 +93,7 @@ module.exports = {
             // Taken and adapted from the official README.
             // See: https://www.npmjs.com/package/git-revision-webpack-plugin
             "ACCOUNTING_SOFTWARE_VERSION": JSON.stringify(gitRevision.version())
-        })
+        }),
+        new ProgressBarPlugin()
     ],
 };

@@ -1,0 +1,34 @@
+import * as React from "react";
+import { Modal } from "semantic-ui-react";
+import { Store, DisplayableError } from "../../store";
+import { connect } from "../../utils";
+
+export interface ErrorsProps {
+    error?: DisplayableError;
+    onDismiss: () => void;
+}
+
+function mapStoreToProps(store: Store) {
+    const { current: error, dismissCurrent } = store.error;
+    return { error, onDismiss: dismissCurrent };
+}
+
+export function StrippedErros({ error, onDismiss }: ErrorsProps) {
+    if (!error) {
+        return null; // tslint:disable-lint
+    }
+    return (
+        <Modal onClose={onDismiss} open>
+            <Modal.Header>
+                An error occured
+            </Modal.Header>
+            <Modal.Content>
+                <Modal.Description>
+                    {error.message}
+                </Modal.Description>
+            </Modal.Content>
+        </Modal>
+    );
+}
+
+export const Errors = connect(StrippedErros, mapStoreToProps);

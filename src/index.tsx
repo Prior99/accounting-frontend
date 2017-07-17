@@ -1,33 +1,26 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 import { observer } from "mobx-react";
 import DevTools from "mobx-react-devtools";
-import { Router, browserHistory } from "react-router";
-
-import { PageLogin } from "./pages";
-import { Store } from "./store";
-import { rootRoute } from "./routing";
+import { App } from "./app";
 import { isProductionEnvironment } from "./utils/environment";
+import "semantic-ui-css/semantic.css";
 import "./style.scss";
 
-@observer
-class App extends React.Component<{}, undefined> {
-    public render() {
-        const { loggedIn } = Store.login;
-        return (
-            <div>
-                <Router history={browserHistory} routes={rootRoute} />
-                {!isProductionEnvironment() && <DevTools />}
-            </div>
-        );
-     }
-}
+import { store } from "./store";
 
 async function main() {
     ReactDOM.render(
-        <App />,
+        <div>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+            {!isProductionEnvironment() && <DevTools />}
+        </div>,
         document.getElementById("root"),
     );
+    store.error.apiError("LOl");
 }
 
 main();

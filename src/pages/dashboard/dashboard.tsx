@@ -1,8 +1,15 @@
 import * as React from "react";
-import { observer } from "mobx-react";
+import { connect, requireLogin } from "../../utils";
+import { Store } from "../../store";
 
-@observer
-export class PageDashboard extends React.Component<{}, undefined> {
+export interface PageDashboardProps {
+}
+
+function mapStoreToProps(store: Store): PageDashboardProps {
+    return {};
+}
+
+export class StrippedPageDashboard extends React.Component<{}, undefined> {
     public render() {
         return (
             <div>
@@ -11,3 +18,5 @@ export class PageDashboard extends React.Component<{}, undefined> {
         );
     }
 }
+
+export const PageDashboard = requireLogin(connect(StrippedPageDashboard, mapStoreToProps));

@@ -1,13 +1,23 @@
 import * as React from "react";
-import { observer } from "mobx-react";
+import { connect } from "../../utils";
+import { Store } from "../../store";
 
-@observer
-export class PageLogin extends React.Component<{}, undefined> {
-    public render() {
-        return (
-            <div>
-                <h1>Login</h1>
-            </div>
-        );
-    }
+export interface PageLoginProps {
+    readonly loggedIn: boolean;
 }
+
+function mapStoreToProps(store: Store): PageLoginProps {
+    const { loggedIn } = store.login;
+    return { loggedIn };
+}
+
+export function StrippedPageLogin(props: PageLoginProps) {
+    return (
+        <div>
+            <h1>Login</h1>
+            {props.loggedIn}
+        </div>
+    );
+}
+
+export const PageLogin = connect(StrippedPageLogin, mapStoreToProps);

@@ -2,13 +2,12 @@
   "name": "accounting-frontend",
   "version": "0.0.0",
   "scripts": {
-    "prebuild": "rm -rf dist/",
     "build": "webpack",
     "build:release": "webpack --config webpack.config-release.js",
     "start": "webpack-dev-server",
     "lint:src": "tslint --format stylish --type-check --project tsconfig.json",
     "lint:style": "stylelint --allow-empty-input src/**/*.scss",
-    "test": "true"
+    "test": "jest"
   },
   "description": "Frontend for the accounting backend application.",
   "main": "src/index.tsx",
@@ -16,28 +15,50 @@
   "author": "Frederick Gnodtke",
   "license": "MIT",
   "dependencies": {
-    "git-revision-webpack-plugin": "^2.5.1",
     "mobx": "^3.2.1",
     "mobx-react": "^4.2.2",
     "ramda": "^0.24.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-router": "3",
+    "react-router-dom": "^4.1.2",
+    "semantic-ui-css": "^2.2.11",
     "semantic-ui-react": "^0.71.0"
   },
+  "jest": {
+    "collectCoverage": true,
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/jest-preprocessor.js"
+    },
+    "testMatch": [
+      "**/__tests__/*.(ts|tsx|js)",
+      "**/__tests__.(ts|tsx|js)"
+    ]
+  },
   "devDependencies": {
+    "@types/jest": "^20.0.2",
     "@types/ramda": "^0.24.3",
     "@types/react": "^15.0.37",
     "@types/react-dom": "^15.5.1",
+    "@types/react-router-dom": "^4.0.7",
+    "@types/react-test-renderer": "^15.5.1",
     "autoprefixer": "^7.1.2",
     "awesome-typescript-loader": "^3.2.1",
     "css-loader": "^0.28.4",
     "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "git-revision-webpack-plugin": "^2.5.1",
+    "jest": "^20.0.4",
     "mobx-react-devtools": "^4.2.15",
-    "postcss": "^6.0.6",
-    "postcss-cssnext": "^3.0.2",
-    "postcss-loader": "^2.0.6",
-    "precss": "^2.0.0",
+    "node-sass": "^4.5.3",
+    "progress-bar-webpack-plugin": "^1.10.0",
+    "react-test-renderer": "^15.6.1",
+    "resolve-url-loader": "^2.1.0",
+    "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "stylelint": "^7.13.0",
     "tslint": "^5.5.0",

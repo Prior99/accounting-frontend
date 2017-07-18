@@ -22,7 +22,7 @@ beforeEach(() => {
 test("`requireLogin()` redirects to the `routeLogin()` route if not logged in", () => {
     store.login.authToken = undefined;
     const current = renderer.render(
-        <DecoratedComponent />
+        <DecoratedComponent />,
     );
     expect(current).toMatchSnapshot();
 });
@@ -30,7 +30,7 @@ test("`requireLogin()` redirects to the `routeLogin()` route if not logged in", 
 test("`requireLogin()` does not redirect if logged in", () => {
     store.login.authToken = "";
     const current = renderer.render(
-        <DecoratedComponent />
+        <DecoratedComponent />,
     );
     expect(current).toMatchSnapshot();
 });

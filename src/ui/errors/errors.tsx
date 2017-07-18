@@ -15,7 +15,7 @@ function mapStoreToProps(store: Store) {
 
 export function StrippedErros({ error, onDismiss }: ErrorsProps) {
     if (!error) {
-        return null; // tslint:disable-lint
+        return null; // tslint:disable-line
     }
     return (
         <Modal onClose={onDismiss} open>

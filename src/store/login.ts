@@ -17,14 +17,14 @@ export class LoginStore {
 
     @computed
     public get loggedIn() {
-        return typeof this.authToken !== "undefined"
+        return typeof this.authToken !== "undefined";
     }
 
     @action
     public async login() {
         const result: LoginResult = await api("/login", {
             username: this.username,
-            password: this.password
+            password: this.password,
         });
         if (result) {
             this.authToken = result.authToken;

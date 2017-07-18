@@ -12,7 +12,7 @@ export let store: Store;
 export function createStore(): Store {
     return {
         login: new LoginStore(),
-        error: new ErrorStore()
+        error: new ErrorStore(),
     };
 }
 

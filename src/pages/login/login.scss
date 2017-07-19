@@ -1,0 +1,14 @@
+@import "../../colors.scss";
+
+.container {
+    background-color: $grey;
+    height: 100%;
+}
+
+.column {
+    max-width: 400px;
+}
+
+.title {
+    color: $white;
+}

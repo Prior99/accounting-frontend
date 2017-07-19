@@ -20,7 +20,6 @@ async function main() {
         </div>,
         document.getElementById("root"),
     );
-    store.error.apiError("LOl");
 }
 
 main();

@@ -10,7 +10,7 @@ export class AppContainer extends React.Component<{}, undefined> {
             <div>
                 <Errors />
                 {this.props.children}
-                <div className={style.version}>Version {ACCOUNTING_SOFTWARE_VERSION}</div>
+                <div className={style.version}>{ACCOUNTING_SOFTWARE_VERSION}</div>
             </div>
         );
     }

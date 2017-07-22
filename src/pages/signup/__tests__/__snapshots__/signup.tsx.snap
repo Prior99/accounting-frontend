@@ -4,10 +4,12 @@ exports[`\`PageSignup\` is rendered correctly initially 1`] = `
 <Translated
   failed={false}
   onSignup={[Function]}
+  succeeded={false}
 >
   <StrippedPageSignup
     failed={false}
     onSignup={[Function]}
+    succeeded={false}
     t={[Function]}
   >
     <Grid
@@ -215,10 +217,12 @@ exports[`\`PageSignup\` is rendered correctly with all fields filled out 1`] = `
 <Translated
   failed={false}
   onSignup={[Function]}
+  succeeded={false}
 >
   <StrippedPageSignup
     failed={false}
     onSignup={[Function]}
+    succeeded={false}
     t={[Function]}
   >
     <Grid

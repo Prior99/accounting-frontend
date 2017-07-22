@@ -1,17 +1,13 @@
 import { observable, computed, action } from "mobx";
 import { api } from "./api";
+import { bind } from "bind-decorator";
 
 interface LoginResult {
     readonly authToken?: string;
 }
 
 export class LoginStore {
-    constructor() {
-        this.login = this.login.bind(this);
-    }
 
-    @observable public username: string;
-    @observable public password: string;
     @observable public authToken: string;
     @observable public failed = false;
 
@@ -20,14 +16,13 @@ export class LoginStore {
         return typeof this.authToken !== "undefined";
     }
 
+    @bind
     @action
-    public async login() {
-        const result: LoginResult = await api("/login", {
-            username: this.username,
-            password: this.password,
-        });
-        if (result) {
-            this.authToken = result.authToken;
+    public async login(email: string, password: string) {
+        const result = await api("/login", { email, password });
+        const { data } = result;
+        if (result.okay && data.auth_token) {
+            this.authToken = data.auth_token;
         } else {
             this.failed = true;
         }

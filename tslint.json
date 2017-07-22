@@ -63,7 +63,6 @@
         "no-invalid-this": [true, "check-function-in-method"],
         "no-null-keyword": true,
         "no-shadowed-variable": true,
-        "no-string-literal": true,
         "no-unsafe-finally": true,
         "no-unused-expression": true,
         "no-var-keyword": true,

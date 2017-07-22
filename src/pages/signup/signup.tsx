@@ -14,30 +14,30 @@ import { translate, InjectedTranslateProps } from "react-i18next";
 export interface PageSignupProps {
 }
 
-function mapStoreToProps(_: Store): PageSignupProps {
+export function mapStoreToProps(_: Store): PageSignupProps {
     return {};
 }
 
-@observer
 @translate(["signup", "common"])
+@observer
 export class StrippedPageSignup extends React.Component<PageSignupProps & InjectedTranslateProps, undefined> {
     @observable private email = "";
     @observable private password = "";
     @observable private repeat = "";
 
     @bind @action
-    private handleEMail({ currentTarget }: React.SyntheticEvent<HTMLInputElement>) {
-        this.email = currentTarget.value;
+    private handleEMail({ target }: React.SyntheticEvent<HTMLInputElement>) {
+        this.email = (target as HTMLInputElement).value;
     }
 
     @bind @action
-    private handlePassword({ currentTarget }: React.SyntheticEvent<HTMLInputElement>) {
-        this.password = currentTarget.value;
+    private handlePassword({ target }: React.SyntheticEvent<HTMLInputElement>) {
+        this.password = (target as HTMLInputElement).value;
     }
 
     @bind @action
-    private handleRepeat({ currentTarget }: React.SyntheticEvent<HTMLInputElement>) {
-        this.repeat = currentTarget.value;
+    private handleRepeat({ target }: React.SyntheticEvent<HTMLInputElement>) {
+        this.repeat = (target as HTMLInputElement).value;
     }
 
     @computed
@@ -95,7 +95,7 @@ export class StrippedPageSignup extends React.Component<PageSignupProps & Inject
                                     onChange={this.handleRepeat}
                                 />
                             </Form.Field>
-                            <Button submit fluid color="olive" disabled={!this.allValid}>Signup</Button>
+                            <Button fluid color="olive" disabled={!this.allValid}>Signup</Button>
                         </Form>
                     </Segment>
                     <Segment tertiary>
@@ -106,6 +106,5 @@ export class StrippedPageSignup extends React.Component<PageSignupProps & Inject
         );
     }
 }
-
 
 export const PageSignup = connect(StrippedPageSignup, mapStoreToProps);

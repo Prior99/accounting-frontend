@@ -17,13 +17,18 @@ export async function api(url: string, body?: any, method: HTTPMethod = "GET"): 
             headers,
             body: JSON.stringify(body),
         });
-        const jsonResponse = (await response.json()).data;
-        if (!jsonResponse.okay) {
+        const jsonResponse = (await response.json());
+        const okay = response.status >= 200 && response.status <= 299;
+        if (!okay) {
             store.error.apiError(`Fetching from url "${fullUrl}" resulted in error: "${jsonResponse.message}"`);
+            return { okay };
         }
-        return jsonResponse.data;
+        return {
+            okay,
+            data: jsonResponse.data,
+        };
     } catch (err) {
         store.error.apiError(`Failed to fetch from url "${fullUrl}".`, err);
-        return;
+        return { okay: false };
     }
 }

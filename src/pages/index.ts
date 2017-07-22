@@ -1,3 +1,3 @@
-export * from "./login";
-export * from "./dashboard";
-export * from "./signup";
+export { PageLogin } from "./login";
+export { PageDashboard } from "./dashboard";
+export { PageSignup } from "./signup";

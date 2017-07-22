@@ -1,0 +1,329 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`\`PageLogin\` is rendered correctly initially 1`] = `
+<Translated>
+  <StrippedPageLogin
+    t={[Function]}
+  >
+    <Grid
+      centered={true}
+      style={
+        Object {
+          "margin": 0,
+        }
+      }
+      verticalAlign="middle"
+    >
+      <div
+        className="ui centered middle aligned grid"
+        style={
+          Object {
+            "margin": 0,
+          }
+        }
+      >
+        <GridColumn
+          stretched={true}
+        >
+          <div
+            className="stretched column"
+          >
+            <h1>
+              common:appName
+            </h1>
+            <Segment
+              stacked={true}
+            >
+              <div
+                className="ui stacked segment"
+              >
+                <Form
+                  as="form"
+                  size="large"
+                >
+                  <form
+                    className="ui large form"
+                    onSubmit={[Function]}
+                  >
+                    <FormField>
+                      <div
+                        className="field"
+                      >
+                        <Input
+                          error={true}
+                          focus={true}
+                          icon="user"
+                          iconPosition="left"
+                          onChange={[Function]}
+                          placeholder="email"
+                          size="large"
+                          type="text"
+                          value=""
+                        >
+                          <div
+                            className="ui large error focus left icon input"
+                          >
+                            <Icon
+                              as="i"
+                              name="user"
+                            >
+                              <i
+                                aria-hidden="true"
+                                className="user icon"
+                              />
+                            </Icon>
+                            <input
+                              onChange={[Function]}
+                              placeholder="email"
+                              type="text"
+                              value=""
+                            />
+                          </div>
+                        </Input>
+                      </div>
+                    </FormField>
+                    <FormField>
+                      <div
+                        className="field"
+                      >
+                        <Input
+                          error={true}
+                          focus={true}
+                          icon="lock"
+                          iconPosition="left"
+                          onChange={[Function]}
+                          placeholder="password"
+                          size="large"
+                          type="password"
+                          value=""
+                        >
+                          <div
+                            className="ui large error focus left icon input"
+                          >
+                            <Icon
+                              as="i"
+                              name="lock"
+                            >
+                              <i
+                                aria-hidden="true"
+                                className="lock icon"
+                              />
+                            </Icon>
+                            <input
+                              onChange={[Function]}
+                              placeholder="password"
+                              type="password"
+                              value=""
+                            />
+                          </div>
+                        </Input>
+                      </div>
+                    </FormField>
+                    <Button
+                      as="button"
+                      color="olive"
+                      disabled={true}
+                      fluid={true}
+                    >
+                      <button
+                        className="ui olive fluid disabled button"
+                        disabled={true}
+                        onClick={[Function]}
+                        tabIndex={-1}
+                      >
+                        login
+                      </button>
+                    </Button>
+                  </form>
+                </Form>
+              </div>
+            </Segment>
+            <Segment
+              tertiary={true}
+            >
+              <div
+                className="ui tertiary segment"
+              >
+                noAccount
+                 
+                <Link
+                  to="/signup"
+                >
+                  <a
+                    href="/signup"
+                  >
+                    signup
+                  </a>
+                </Link>
+              </div>
+            </Segment>
+          </div>
+        </GridColumn>
+      </div>
+    </Grid>
+  </StrippedPageLogin>
+</Translated>
+`;
+
+exports[`\`PageLogin\` is rendered correctly with all fields filled out 1`] = `
+<Translated>
+  <StrippedPageLogin
+    t={[Function]}
+  >
+    <Grid
+      centered={true}
+      style={
+        Object {
+          "margin": 0,
+        }
+      }
+      verticalAlign="middle"
+    >
+      <div
+        className="ui centered middle aligned grid"
+        style={
+          Object {
+            "margin": 0,
+          }
+        }
+      >
+        <GridColumn
+          stretched={true}
+        >
+          <div
+            className="stretched column"
+          >
+            <h1>
+              common:appName
+            </h1>
+            <Segment
+              stacked={true}
+            >
+              <div
+                className="ui stacked segment"
+              >
+                <Form
+                  as="form"
+                  size="large"
+                >
+                  <form
+                    className="ui large form"
+                    onSubmit={[Function]}
+                  >
+                    <FormField>
+                      <div
+                        className="field"
+                      >
+                        <Input
+                          error={false}
+                          focus={true}
+                          icon="user"
+                          iconPosition="left"
+                          onChange={[Function]}
+                          placeholder="email"
+                          size="large"
+                          type="text"
+                          value="test@example.com"
+                        >
+                          <div
+                            className="ui large focus left icon input"
+                          >
+                            <Icon
+                              as="i"
+                              name="user"
+                            >
+                              <i
+                                aria-hidden="true"
+                                className="user icon"
+                              />
+                            </Icon>
+                            <input
+                              onChange={[Function]}
+                              placeholder="email"
+                              type="text"
+                              value="test@example.com"
+                            />
+                          </div>
+                        </Input>
+                      </div>
+                    </FormField>
+                    <FormField>
+                      <div
+                        className="field"
+                      >
+                        <Input
+                          error={false}
+                          focus={true}
+                          icon="lock"
+                          iconPosition="left"
+                          onChange={[Function]}
+                          placeholder="password"
+                          size="large"
+                          type="password"
+                          value="abcdefgh"
+                        >
+                          <div
+                            className="ui large focus left icon input"
+                          >
+                            <Icon
+                              as="i"
+                              name="lock"
+                            >
+                              <i
+                                aria-hidden="true"
+                                className="lock icon"
+                              />
+                            </Icon>
+                            <input
+                              onChange={[Function]}
+                              placeholder="password"
+                              type="password"
+                              value="abcdefgh"
+                            />
+                          </div>
+                        </Input>
+                      </div>
+                    </FormField>
+                    <Button
+                      as="button"
+                      color="olive"
+                      disabled={false}
+                      fluid={true}
+                    >
+                      <button
+                        className="ui olive fluid button"
+                        onClick={[Function]}
+                      >
+                        login
+                      </button>
+                    </Button>
+                  </form>
+                </Form>
+              </div>
+            </Segment>
+            <Segment
+              tertiary={true}
+            >
+              <div
+                className="ui tertiary segment"
+              >
+                noAccount
+                 
+                <Link
+                  to="/signup"
+                >
+                  <a
+                    href="/signup"
+                  >
+                    signup
+                  </a>
+                </Link>
+              </div>
+            </Segment>
+          </div>
+        </GridColumn>
+      </div>
+    </Grid>
+  </StrippedPageLogin>
+</Translated>
+`;

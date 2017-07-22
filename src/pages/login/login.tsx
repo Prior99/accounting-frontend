@@ -14,24 +14,24 @@ import { translate, InjectedTranslateProps } from "react-i18next";
 export interface PageLoginProps {
 }
 
-function mapStoreToProps(_: Store): PageLoginProps {
+export function mapStoreToProps(_: Store): PageLoginProps {
     return {};
 }
 
-@observer
 @translate(["login", "common"])
+@observer
 export class StrippedPageLogin extends React.Component<PageLoginProps & InjectedTranslateProps, undefined> {
     @observable private email = "";
     @observable private password = "";
 
     @bind @action
-    private handleEMail({ currentTarget }: React.SyntheticEvent<HTMLInputElement>) {
-        this.email = currentTarget.value;
+    private handleEMail({ target }: React.SyntheticEvent<HTMLInputElement>) {
+        this.email = (target as HTMLInputElement).value;
     }
 
     @bind @action
-    private handlePassword({ currentTarget }: React.SyntheticEvent<HTMLInputElement>) {
-        this.password = currentTarget.value;
+    private handlePassword({ target }: React.SyntheticEvent<HTMLInputElement>) {
+        this.password = (target as HTMLInputElement).value;
     }
 
     @computed
@@ -76,7 +76,7 @@ export class StrippedPageLogin extends React.Component<PageLoginProps & Injected
                                     onChange={this.handlePassword}
                                 />
                             </Form.Field>
-                            <Button submit fluid color="olive" disabled={!this.allValid}>{t("login")}</Button>
+                            <Button fluid color="olive" disabled={!this.allValid}>{t("login")}</Button>
                         </Form>
                     </Segment>
                     <Segment tertiary>
@@ -87,6 +87,5 @@ export class StrippedPageLogin extends React.Component<PageLoginProps & Injected
         );
     }
 }
-
 
 export const PageLogin = connect(StrippedPageLogin, mapStoreToProps);

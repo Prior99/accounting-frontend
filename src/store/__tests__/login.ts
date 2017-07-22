@@ -20,19 +20,19 @@ test("The `LoginStore` has `loggedIn` `true` when an `authToken` is present", ()
 });
 
 test("The `LoginStore` has `loggedIn` `true` after performing a successfull login", async () => {
-    fetchMock.mock(`about://example.com/login`, {
+    fetchMock.mock(`about://example.com/auth/login`, {
         status: HTTP.OK,
         body: JSON.stringify({
             data: { auth_token: someAuthToken }
         })
     });
-    await store.login.login(someEmail, somePassword);
+    await store.login.onLogin(someEmail, somePassword);
     expect(store.login.loggedIn).toBe(true);
     expect(store.login.authToken).toBe(someAuthToken);
 });
 
 test("The `LoginStore` has `failure` `true` after performing a failed login", async () => {
-    await store.login.login(someEmail, somePassword);
+    await store.login.onLogin(someEmail, somePassword);
     expect(store.login.loggedIn).toBe(false);
     expect(store.login.failed).toBe(true);
 });

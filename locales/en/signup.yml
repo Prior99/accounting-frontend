@@ -3,3 +3,10 @@ password: "Password"
 repeat: "Repeat"
 haveAccount: "Already have an account?"
 login: "Login"
+signup: "Sign up"
+signupFailed:
+  headline: "Could not sign up"
+  content: "Perhaps this email is already associated with an existing account?"
+signupSuccess:
+  headline: "Successfully signed up"
+  content: "You successfullt signed up and may login now."

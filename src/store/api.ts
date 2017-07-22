@@ -4,7 +4,7 @@ declare var baseUrl: string;
 
 type HTTPMethod = "DELETE" | "GET" | "PUT" | "POST";
 
-export async function api(url: string, body?: any, method: HTTPMethod = "GET"): Promise<any> {
+export async function api(url: string, body?: any, method: HTTPMethod = "GET", noError = false): Promise<any> {
     const headers = new Headers();
     if (store.login.loggedIn) {
         headers.append("authorization", store.login.authToken);
@@ -20,7 +20,9 @@ export async function api(url: string, body?: any, method: HTTPMethod = "GET"): 
         const jsonResponse = (await response.json());
         const okay = response.status >= 200 && response.status <= 299;
         if (!okay) {
-            store.error.apiError(`Fetching from url "${fullUrl}" resulted in error: "${jsonResponse.message}"`);
+            if (!noError) {
+                store.error.apiError(`Fetching from url "${fullUrl}" resulted in error: "${jsonResponse.message}"`);
+            }
             return { okay };
         }
         return {

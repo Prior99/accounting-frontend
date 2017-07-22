@@ -12,13 +12,13 @@ beforeEach(() => {
 });
 
 test("`PageSignup` is rendered correctly initially", () => {
-    const mounted = mount(<StrippedPageSignup />);
+    const mounted = mount(<StrippedPageSignup failed={false} onSignup={jest.fn()} />);
     expect(toJson(mounted)).toMatchSnapshot();
     expect(mounted.find("button").props()["disabled"]).toBe(true);
 });
 
 test("`PageSignup` is rendered correctly with all fields filled out", () => {
-    const mounted = mount(<StrippedPageSignup />);
+    const mounted = mount(<StrippedPageSignup failed={false} onSignup={jest.fn()} />);
     mounted.find("input[placeholder='email']").simulate("change", { target: { value: "test@example.com" }});
     mounted.find("input[placeholder='password']").simulate("change", { target: { value: "abcdefgh" }});
     mounted.find("input[placeholder='repeat']").simulate("change", { target: { value: "abcdefgh" }});

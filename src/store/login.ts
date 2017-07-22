@@ -2,12 +2,7 @@ import { observable, computed, action } from "mobx";
 import { api } from "./api";
 import { bind } from "bind-decorator";
 
-interface LoginResult {
-    readonly authToken?: string;
-}
-
 export class LoginStore {
-
     @observable public authToken: string;
     @observable public failed = false;
 
@@ -18,8 +13,8 @@ export class LoginStore {
 
     @bind
     @action
-    public async login(email: string, password: string) {
-        const result = await api("/login", { email, password });
+    public async onLogin(email: string, password: string) {
+        const result = await api("/auth/login", { email, password }, "POST", true);
         const { data } = result;
         if (result.okay && data.auth_token) {
             this.authToken = data.auth_token;

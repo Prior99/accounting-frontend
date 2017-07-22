@@ -28,5 +28,16 @@ test("`PageSignup` is rendered correctly with all fields filled out", () => {
 
 test("`mapStoreToProps()` returns the expected properties", () => {
     const props = mapStoreToProps(store);
-    expect(props).toEqual({});
+    expect(props).toEqual({
+        onSignup: store.signup.onSignup,
+        failed: false,
+        succeeded: false
+    });
+});
+
+test("`PageSignup` calls `onSignup` if the button is clicked", () => {
+    const onSignup = jest.fn();
+    const mounted = mount(<StrippedPageSignup failed={false} onSignup={onSignup}/>);
+    mounted.find("form").simulate("submit");
+    expect(onSignup).toHaveBeenCalled();
 });

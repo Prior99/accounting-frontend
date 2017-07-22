@@ -42,6 +42,5 @@ test("`PageLogin` calls `onLogin` if the button is clicked", () => {
     const onLogin = jest.fn();
     const mounted = mount(<StrippedPageLogin failed={false} onLogin={onLogin}/>);
     mounted.find("form").simulate("submit");
-    console.log(onLogin)
     expect(onLogin).toHaveBeenCalled();
 });

@@ -1,8 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`\`PageSignup\` is rendered correctly initially 1`] = `
-<Translated>
+<Translated
+  failed={false}
+  onSignup={[Function]}
+>
   <StrippedPageSignup
+    failed={false}
+    onSignup={[Function]}
     t={[Function]}
   >
     <Grid
@@ -39,6 +44,7 @@ exports[`\`PageSignup\` is rendered correctly initially 1`] = `
               >
                 <Form
                   as="form"
+                  onSubmit={[Function]}
                   size="large"
                 >
                   <form
@@ -161,14 +167,16 @@ exports[`\`PageSignup\` is rendered correctly initially 1`] = `
                       color="olive"
                       disabled={true}
                       fluid={true}
+                      type="submit"
                     >
                       <button
                         className="ui olive fluid disabled button"
                         disabled={true}
                         onClick={[Function]}
                         tabIndex={-1}
+                        type="submit"
                       >
-                        Signup
+                        signup
                       </button>
                     </Button>
                   </form>
@@ -204,8 +212,13 @@ exports[`\`PageSignup\` is rendered correctly initially 1`] = `
 `;
 
 exports[`\`PageSignup\` is rendered correctly with all fields filled out 1`] = `
-<Translated>
+<Translated
+  failed={false}
+  onSignup={[Function]}
+>
   <StrippedPageSignup
+    failed={false}
+    onSignup={[Function]}
     t={[Function]}
   >
     <Grid
@@ -242,6 +255,7 @@ exports[`\`PageSignup\` is rendered correctly with all fields filled out 1`] = `
               >
                 <Form
                   as="form"
+                  onSubmit={[Function]}
                   size="large"
                 >
                   <form
@@ -364,12 +378,14 @@ exports[`\`PageSignup\` is rendered correctly with all fields filled out 1`] = `
                       color="olive"
                       disabled={false}
                       fluid={true}
+                      type="submit"
                     >
                       <button
                         className="ui olive fluid button"
                         onClick={[Function]}
+                        type="submit"
                       >
-                        Signup
+                        signup
                       </button>
                     </Button>
                   </form>

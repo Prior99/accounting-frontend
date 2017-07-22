@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Modal } from "semantic-ui-react";
-import { Store, DisplayableError } from "../../store";
-import { connect } from "../../utils";
+import { Store, DisplayableError } from "store";
+import { connect } from "utils";
 
 export interface ErrorsProps {
     error?: DisplayableError;

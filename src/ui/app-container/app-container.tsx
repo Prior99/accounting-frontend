@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as style from "./style.scss";
-import { Errors } from "../errors";
+import { Errors } from "ui/errors";
 
 declare var ACCOUNTING_SOFTWARE_VERSION: string;
 

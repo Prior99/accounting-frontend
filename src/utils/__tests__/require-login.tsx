@@ -1,7 +1,7 @@
 import * as React from "react";
-import { routeLogin } from "../../routing";
+import { routeLogin } from "routing";
 import { requireLogin } from "..";
-import { store, resetStore } from "../../store";
+import { store, resetStore } from "store";
 import { createRenderer, ShallowRenderer } from "react-test-renderer/shallow";
 
 function SomeComponent(props: {}) {

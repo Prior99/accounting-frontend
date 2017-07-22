@@ -3,10 +3,10 @@ import * as ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { observer } from "mobx-react";
 import DevTools from "mobx-react-devtools";
-import { App } from "./app";
-import { isProductionEnvironment } from "./utils/environment";
+import { App } from "app";
+import { isProductionEnvironment } from "utils/environment";
 import "semantic-ui-css/semantic.css";
-import "./style.scss";
+import "style.scss";
 
 import { store } from "./store";
 

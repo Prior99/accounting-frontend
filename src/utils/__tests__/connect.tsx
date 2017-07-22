@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "..";
-import { store, Store, resetStore } from "../../store";
+import { store, Store, resetStore } from "store";
 import { create } from "react-test-renderer";
 
 function mapStoreToProps(argStore: Store) {

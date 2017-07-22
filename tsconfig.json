@@ -9,7 +9,8 @@
         "noLib": false,
         "jsx": "react",
         "outDir": "dist",
-        "lib": ["es2016", "dom"]
+        "lib": ["es2016", "dom"],
+        "baseUrl": "./src"
     },
     "include": [
         "typings/*",

@@ -15,7 +15,11 @@ module.exports = {
         publicPath: "/dist"
     },
     resolve: {
-        extensions: [".js", ".jsx", ".ts", ".tsx", ".json"]
+        extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
+        modules: [
+            path.resolve("./src"),
+            path.resolve("./node_modules")
+        ]
     },
     module: {
         rules: [

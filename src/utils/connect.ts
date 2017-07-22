@@ -1,6 +1,6 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import { store, Store } from "../store";
+import { store, Store } from "store";
 
 export function connect<OwnProps, StoreProps>(
         component: React.ComponentClass<StoreProps & OwnProps> | React.StatelessComponent<StoreProps & OwnProps>,

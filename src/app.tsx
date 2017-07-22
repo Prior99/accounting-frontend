@@ -1,6 +1,6 @@
 import * as React from "react";
-import { AppContainer } from "./ui/app-container";
-import { PageLogin, PageDashboard } from "./pages";
+import { AppContainer } from "ui/app-container";
+import { PageLogin, PageDashboard } from "pages";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 function Container() {

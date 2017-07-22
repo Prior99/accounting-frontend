@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Redirect } from "react-router-dom";
 import { observer } from "mobx-react";
-import { store } from "../store";
-import { routeLogin } from "../routing";
+import { store } from "store";
+import { routeLogin } from "routing";
 
 export function requireLogin<Props>(
         component: React.ComponentClass<Props> | React.StatelessComponent<Props>): React.ComponentClass<Props> {

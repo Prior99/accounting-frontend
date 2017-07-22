@@ -1,10 +1,10 @@
 import * as React from "react";
-import { connect } from "../../utils";
-import { Store } from "../../store";
+import { connect } from "utils";
+import { Store } from "store";
 import * as style from "./login.scss";
 import { Grid, Segment, Input, Button, Form } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import { routeSignup } from "../../routing";
+import { routeSignup } from "routing";
 
 export interface PageLoginProps {
     readonly loggedIn: boolean;

@@ -37,7 +37,8 @@
     "testMatch": [
       "**/__tests__/*.(ts|tsx|js)",
       "**/__tests__.(ts|tsx|js)"
-    ]
+    ],
+    "moduleDirectories": ["node_modules", "src"]
   },
   "devDependencies": {
     "@types/jest": "^20.0.2",

@@ -1,6 +1,6 @@
 import * as React from "react";
-import { connect, requireLogin } from "../../utils";
-import { Store } from "../../store";
+import { connect, requireLogin } from "utils";
+import { Store } from "store";
 
 export interface PageDashboardProps {
 }

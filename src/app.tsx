@@ -1,6 +1,6 @@
 import * as React from "react";
 import { AppContainer } from "ui/app-container";
-import { PageLogin, PageDashboard } from "pages";
+import { PageLogin, PageDashboard, PageSignup } from "pages";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 function Container() {
@@ -14,9 +14,10 @@ function Container() {
 export function App() {
     return (
         <AppContainer>
-            <Redirect from="/" to="/login" />
             <Switch>
+                <Redirect exact from="/" to="/login" />
                 <Route path="/login" component={PageLogin} />
+                <Route path="/signup" component={PageSignup} />
                 <Route component={Container} />
             </Switch>
         </AppContainer>

@@ -21,3 +21,9 @@ export function resetStore() {
 }
 
 resetStore();
+
+if (typeof window !== undefined) {
+    (window as any).store = store;
+    (window as any).createStore = createStore;
+    (window as any).resetStore = resetStore;
+}

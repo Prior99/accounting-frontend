@@ -1,26 +1,27 @@
 import * as React from "react";
 import { connect } from "utils";
 import { Store } from "store";
-import * as style from "./login.scss";
+import * as style from "./signup.scss";
 import { Grid, Segment, Input, Button, Form } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import { routeSignup } from "routing";
+import { routeLogin } from "routing";
 import { observable, action, computed } from "mobx";
 import { observer } from "mobx-react";
 import bind from "bind-decorator";
 import { validateEMail, validatePassword } from "utils";
 
-export interface PageLoginProps {
+export interface PageSignupProps {
 }
 
-function mapStoreToProps(_: Store): PageLoginProps {
+function mapStoreToProps(_: Store): PageSignupProps {
     return {};
 }
 
 @observer
-export class StrippedPageLogin extends React.Component<PageLoginProps, undefined> {
+export class StrippedPageSignup extends React.Component<PageSignupProps, undefined> {
     @observable private email = "";
     @observable private password = "";
+    @observable private repeat = "";
 
     @bind @action
     private handleEMail({ currentTarget }: React.SyntheticEvent<HTMLInputElement>) {
@@ -32,11 +33,16 @@ export class StrippedPageLogin extends React.Component<PageLoginProps, undefined
         this.password = currentTarget.value;
     }
 
+    @bind @action
+    private handleRepeat({ currentTarget }: React.SyntheticEvent<HTMLInputElement>) {
+        this.repeat = currentTarget.value;
+    }
+
     @computed
     private get emailValid() { return validateEMail(this.email); }
 
     @computed
-    private get passwordValid() { return validatePassword(this.password); }
+    private get passwordValid() { return validatePassword(this.password) && this.password === this.repeat; }
 
     @computed
     private get allValid() { return this.emailValid && this.passwordValid; }
@@ -73,11 +79,24 @@ export class StrippedPageLogin extends React.Component<PageLoginProps, undefined
                                     onChange={this.handlePassword}
                                 />
                             </Form.Field>
-                            <Button submit fluid color="olive" disabled={!this.allValid}>Login</Button>
+                            <Form.Field>
+                                <Input
+                                    size="large"
+                                    icon="repeat"
+                                    type="password"
+                                    iconPosition="left"
+                                    focus
+                                    placeholder="Repeat"
+                                    value={this.repeat}
+                                    error={!this.passwordValid}
+                                    onChange={this.handleRepeat}
+                                />
+                            </Form.Field>
+                            <Button submit fluid color="olive" disabled={!this.allValid}>Signup</Button>
                         </Form>
                     </Segment>
                     <Segment tertiary>
-                        No account yet? <Link to={routeSignup()}>Sign up.</Link>
+                        Already have an account? <Link to={routeLogin()}>Login.</Link>
                     </Segment>
                 </Grid.Column>
             </Grid>
@@ -86,4 +105,4 @@ export class StrippedPageLogin extends React.Component<PageLoginProps, undefined
 }
 
 
-export const PageLogin = connect(StrippedPageLogin, mapStoreToProps);
+export const PageSignup = connect(StrippedPageSignup, mapStoreToProps);

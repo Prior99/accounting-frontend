@@ -15,6 +15,7 @@
   "author": "Frederick Gnodtke",
   "license": "MIT",
   "dependencies": {
+    "bind-decorator": "^1.0.11",
     "mobx": "^3.2.1",
     "mobx-react": "^4.2.2",
     "ramda": "^0.24.1",
@@ -38,7 +39,10 @@
       "**/__tests__/*.(ts|tsx|js)",
       "**/__tests__.(ts|tsx|js)"
     ],
-    "moduleDirectories": ["node_modules", "src"]
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ]
   },
   "devDependencies": {
     "@types/jest": "^20.0.2",

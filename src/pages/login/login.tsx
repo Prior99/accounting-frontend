@@ -9,6 +9,7 @@ import { observable, action, computed } from "mobx";
 import { observer } from "mobx-react";
 import bind from "bind-decorator";
 import { validateEMail, validatePassword } from "utils";
+import { translate, InjectedTranslateProps } from "react-i18next";
 
 export interface PageLoginProps {
 }
@@ -18,7 +19,8 @@ function mapStoreToProps(_: Store): PageLoginProps {
 }
 
 @observer
-export class StrippedPageLogin extends React.Component<PageLoginProps, undefined> {
+@translate(["login", "common"])
+export class StrippedPageLogin extends React.Component<PageLoginProps & InjectedTranslateProps, undefined> {
     @observable private email = "";
     @observable private password = "";
 
@@ -42,10 +44,11 @@ export class StrippedPageLogin extends React.Component<PageLoginProps, undefined
     private get allValid() { return this.emailValid && this.passwordValid; }
 
     public render() {
+        const { t } = this.props;
         return (
             <Grid className={style.container} centered verticalAlign="middle" style={{ margin: 0 }}>
                 <Grid.Column stretched className={style.column}>
-                    <h1 className={style.title}>No Books</h1>
+                    <h1 className={style.title}>{t("common:appName")}</h1>
                     <Segment stacked>
                         <Form size="large">
                             <Form.Field>
@@ -54,7 +57,7 @@ export class StrippedPageLogin extends React.Component<PageLoginProps, undefined
                                     icon="user"
                                     iconPosition="left"
                                     focus
-                                    placeholder="EMail"
+                                    placeholder={t("email")}
                                     value={this.email}
                                     error={!this.emailValid}
                                     onChange={this.handleEMail}
@@ -67,17 +70,17 @@ export class StrippedPageLogin extends React.Component<PageLoginProps, undefined
                                     type="password"
                                     iconPosition="left"
                                     focus
-                                    placeholder="Password"
+                                    placeholder={t("password")}
                                     value={this.password}
                                     error={!this.passwordValid}
                                     onChange={this.handlePassword}
                                 />
                             </Form.Field>
-                            <Button submit fluid color="olive" disabled={!this.allValid}>Login</Button>
+                            <Button submit fluid color="olive" disabled={!this.allValid}>{t("login")}</Button>
                         </Form>
                     </Segment>
                     <Segment tertiary>
-                        No account yet? <Link to={routeSignup()}>Sign up.</Link>
+                        {t("noAccount")} <Link to={routeSignup()}>{t("signup")}</Link>
                     </Segment>
                 </Grid.Column>
             </Grid>

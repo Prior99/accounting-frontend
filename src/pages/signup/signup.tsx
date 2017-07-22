@@ -9,6 +9,7 @@ import { observable, action, computed } from "mobx";
 import { observer } from "mobx-react";
 import bind from "bind-decorator";
 import { validateEMail, validatePassword } from "utils";
+import { translate, InjectedTranslateProps } from "react-i18next";
 
 export interface PageSignupProps {
 }
@@ -18,7 +19,8 @@ function mapStoreToProps(_: Store): PageSignupProps {
 }
 
 @observer
-export class StrippedPageSignup extends React.Component<PageSignupProps, undefined> {
+@translate(["signup", "common"])
+export class StrippedPageSignup extends React.Component<PageSignupProps & InjectedTranslateProps, undefined> {
     @observable private email = "";
     @observable private password = "";
     @observable private repeat = "";
@@ -48,10 +50,11 @@ export class StrippedPageSignup extends React.Component<PageSignupProps, undefin
     private get allValid() { return this.emailValid && this.passwordValid; }
 
     public render() {
+        const { t } = this.props;
         return (
             <Grid className={style.container} centered verticalAlign="middle" style={{ margin: 0 }}>
                 <Grid.Column stretched className={style.column}>
-                    <h1 className={style.title}>No Books</h1>
+                    <h1 className={style.title}>{t("common:appName")}</h1>
                     <Segment stacked>
                         <Form size="large">
                             <Form.Field>
@@ -60,7 +63,7 @@ export class StrippedPageSignup extends React.Component<PageSignupProps, undefin
                                     icon="user"
                                     iconPosition="left"
                                     focus
-                                    placeholder="EMail"
+                                    placeholder={t("email")}
                                     value={this.email}
                                     error={!this.emailValid}
                                     onChange={this.handleEMail}
@@ -73,7 +76,7 @@ export class StrippedPageSignup extends React.Component<PageSignupProps, undefin
                                     type="password"
                                     iconPosition="left"
                                     focus
-                                    placeholder="Password"
+                                    placeholder={t("password")}
                                     value={this.password}
                                     error={!this.passwordValid}
                                     onChange={this.handlePassword}
@@ -86,7 +89,7 @@ export class StrippedPageSignup extends React.Component<PageSignupProps, undefin
                                     type="password"
                                     iconPosition="left"
                                     focus
-                                    placeholder="Repeat"
+                                    placeholder={t("repeat")}
                                     value={this.repeat}
                                     error={!this.passwordValid}
                                     onChange={this.handleRepeat}
@@ -96,7 +99,7 @@ export class StrippedPageSignup extends React.Component<PageSignupProps, undefin
                         </Form>
                     </Segment>
                     <Segment tertiary>
-                        Already have an account? <Link to={routeLogin()}>Login.</Link>
+                        {t("haveAccount")} <Link to={routeLogin()}>{t("login")}.</Link>
                     </Segment>
                 </Grid.Column>
             </Grid>

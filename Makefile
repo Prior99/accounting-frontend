@@ -5,7 +5,7 @@ default: debug
 all: default lint test
 
 .PHONY: debug
-debug: node_modules
+debug: node_modules locales
 	yarn run build
 
 .PHONY: node_modules
@@ -18,7 +18,7 @@ lint:
 	yarn run lint:style
 
 .PHONY: run
-run: node_modules
+run: node_modules locales
 	yarn start
 
 .PHONY: test
@@ -26,16 +26,20 @@ test:
 	yarn test
 
 .PHONY: release
-release: node_modules
+release: node_modules locales
 	yarn run build:release
 
 .PHONY: package
 package: clean release
 	rm -Rf node_modules
 	yarn install --production
-	tar cfz `git describe`.tar.gz dist/ index.html config.js node_modules
+	tar cfz `git describe`.tar.gz dist/ index.html config.js node_modules locales
 
 .PHONY: clean
 clean:
 	rm -Rf dist/
 	rm -Rf node_modules
+
+.PHONY: locales
+locales:
+	yarn run build-locales

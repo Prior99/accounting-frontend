@@ -15,7 +15,7 @@ export function createStore(): Store {
     return {
         login: new LoginStore(),
         error: new ErrorStore(),
-        signup: new SignupStore()
+        signup: new SignupStore(),
     };
 }
 

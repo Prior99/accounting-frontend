@@ -12,13 +12,21 @@ beforeEach(() => {
 });
 
 test("`PageSignup` is rendered correctly initially", () => {
-    const mounted = mount(<StrippedPageSignup failed={false} onSignup={jest.fn()} />);
+    const mounted = mount(<StrippedPageSignup
+        failed={false}
+        succeeded={false}
+        onSignup={jest.fn()}
+    />);
     expect(toJson(mounted)).toMatchSnapshot();
     expect(mounted.find("button").props()["disabled"]).toBe(true);
 });
 
 test("`PageSignup` is rendered correctly with all fields filled out", () => {
-    const mounted = mount(<StrippedPageSignup failed={false} onSignup={jest.fn()} />);
+    const mounted = mount(<StrippedPageSignup
+        failed={false}
+        succeeded={false}
+        onSignup={jest.fn()}
+    />);
     mounted.find("input[placeholder='email']").simulate("change", { target: { value: "test@example.com" }});
     mounted.find("input[placeholder='password']").simulate("change", { target: { value: "abcdefgh" }});
     mounted.find("input[placeholder='repeat']").simulate("change", { target: { value: "abcdefgh" }});
@@ -31,13 +39,17 @@ test("`mapStoreToProps()` returns the expected properties", () => {
     expect(props).toEqual({
         onSignup: store.signup.onSignup,
         failed: false,
-        succeeded: false
+        succeeded: false,
     });
 });
 
 test("`PageSignup` calls `onSignup` if the button is clicked", () => {
     const onSignup = jest.fn();
-    const mounted = mount(<StrippedPageSignup failed={false} onSignup={onSignup}/>);
+    const mounted = mount(<StrippedPageSignup
+        failed={false}
+        succeeded={false}
+        onSignup={onSignup}
+    />);
     mounted.find("form").simulate("submit");
     expect(onSignup).toHaveBeenCalled();
 });

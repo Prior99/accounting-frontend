@@ -34,7 +34,7 @@ test("`mapStoreToProps()` returns the expected properties", () => {
     const props = mapStoreToProps(store);
     expect(props).toEqual({
         onLogin: store.login.onLogin,
-        failed: false
+        failed: false,
     });
 });
 

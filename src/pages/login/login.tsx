@@ -12,8 +12,8 @@ import { validateEMail, validatePassword } from "utils";
 import { translate, InjectedTranslateProps } from "react-i18next";
 
 export interface PageLoginProps {
-    readonly failed: boolean;
-    readonly onLogin: (email: string, password: string) => {};
+    failed: boolean;
+    onLogin: (email: string, password: string) => {};
 }
 
 export function mapStoreToProps(store: Store): PageLoginProps {

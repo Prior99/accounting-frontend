@@ -12,9 +12,9 @@ import { validateEMail, validatePassword } from "utils";
 import { translate, InjectedTranslateProps } from "react-i18next";
 
 export interface PageSignupProps {
-    readonly failed: boolean;
-    readonly succeeded: boolean;
-    readonly onSignup: (email: string, password: string) => {};
+    failed: boolean;
+    succeeded: boolean;
+    onSignup: (email: string, password: string) => {};
 }
 
 export function mapStoreToProps(store: Store): PageSignupProps {

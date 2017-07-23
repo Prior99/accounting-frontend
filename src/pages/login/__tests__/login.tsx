@@ -6,24 +6,25 @@ import { StrippedPageLogin, mapStoreToProps } from "..";
 import { mount } from "enzyme";
 import toJson from "enzyme-to-json";
 import { store, resetStore } from "store";
+import { RequestStatus } from "request-status";
 
 beforeEach(() => {
     resetStore();
 });
 
 test("`PageLogin` is rendered correctly initially", () => {
-    const mounted = mount(<StrippedPageLogin failed={false} onLogin={jest.fn()} />);
+    const mounted = mount(<StrippedPageLogin status={RequestStatus.PENDING} onLogin={jest.fn()} />);
     expect(toJson(mounted)).toMatchSnapshot();
     expect(mounted.find("button").props()["disabled"]).toBe(true);
 });
 
 test("`PageLogin` is rendered with a warning message if the login is failed", () => {
-    const mounted = mount(<StrippedPageLogin failed={true}  onLogin={jest.fn()}/>);
+    const mounted = mount(<StrippedPageLogin status={RequestStatus.FAIL}  onLogin={jest.fn()}/>);
     expect(toJson(mounted)).toMatchSnapshot();
 });
 
 test("`PageLogin` is rendered correctly with all fields filled out", () => {
-    const mounted = mount(<StrippedPageLogin failed={false} onLogin={jest.fn()} />);
+    const mounted = mount(<StrippedPageLogin status={RequestStatus.PENDING} onLogin={jest.fn()} />);
     mounted.find("input[placeholder='email']").simulate("change", { target: { value: "test@example.com" }});
     mounted.find("input[placeholder='password']").simulate("change", { target: { value: "abcdefgh" }});
     expect(toJson(mounted)).toMatchSnapshot();
@@ -34,13 +35,13 @@ test("`mapStoreToProps()` returns the expected properties", () => {
     const props = mapStoreToProps(store);
     expect(props).toEqual({
         onLogin: store.login.onLogin,
-        failed: false,
+        status: RequestStatus.PENDING,
     });
 });
 
 test("`PageLogin` calls `onLogin` if the button is clicked", () => {
     const onLogin = jest.fn();
-    const mounted = mount(<StrippedPageLogin failed={false} onLogin={onLogin}/>);
+    const mounted = mount(<StrippedPageLogin status={RequestStatus.PENDING} onLogin={onLogin}/>);
     mounted.find("form").simulate("submit");
     expect(onLogin).toHaveBeenCalled();
 });

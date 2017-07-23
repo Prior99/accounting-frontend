@@ -41,6 +41,7 @@
     "transform": {
       "^.+\\.(ts|tsx|scss)$": "<rootDir>/jest-preprocessor.js"
     },
+    "setupTestFrameworkScriptFile": "<rootDir>/jest-setups.js",
     "testMatch": [
       "**/__tests__/*.(ts|tsx|js)",
       "**/__tests__.(ts|tsx|js)"

@@ -17,18 +17,15 @@ export async function api(url: string, body?: any, method: HTTPMethod = "GET", n
             headers,
             body: JSON.stringify(body),
         });
-        const jsonResponse = (await response.json());
+        const data = await response.json();
         const okay = response.status >= 200 && response.status <= 299;
         if (!okay) {
             if (!noError) {
-                store.error.apiError(`Fetching from url "${fullUrl}" resulted in error: "${jsonResponse.message}"`);
+                store.error.apiError(`Fetching from url "${fullUrl}" resulted in error: "${data.message}"`);
             }
             return { okay };
         }
-        return {
-            okay,
-            data: jsonResponse.data,
-        };
+        return { okay, data };
     } catch (err) {
         store.error.apiError(`Failed to fetch from url "${fullUrl}".`, err);
         return { okay: false };

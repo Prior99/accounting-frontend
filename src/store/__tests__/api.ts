@@ -28,9 +28,7 @@ test("The `api()` utility calls routes with the correct parameters and returns a
     store.login.authToken = someAuthToken;
     fetchMock.mock(mockUrl, {
         status: HTTP.OK,
-        body: JSON.stringify({
-            data: someData
-        })
+        body: JSON.stringify(someData)
     });
     const result = await api(someUrl, someBody, "POST");
     const call = fetchMock.lastCall(mockUrl)[1];

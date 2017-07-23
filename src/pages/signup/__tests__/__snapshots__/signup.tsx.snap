@@ -2,14 +2,12 @@
 
 exports[`\`PageSignup\` is rendered correctly initially 1`] = `
 <Translated
-  failed={false}
   onSignup={[Function]}
-  succeeded={false}
+  status="pending"
 >
   <StrippedPageSignup
-    failed={false}
     onSignup={[Function]}
-    succeeded={false}
+    status="pending"
     t={[Function]}
   >
     <Grid
@@ -38,6 +36,14 @@ exports[`\`PageSignup\` is rendered correctly initially 1`] = `
             <h1>
               common:appName
             </h1>
+            <Translated
+              status="pending"
+            >
+              <StatusMessage
+                status="pending"
+                t={[Function]}
+              />
+            </Translated>
             <Segment
               stacked={true}
             >
@@ -215,14 +221,12 @@ exports[`\`PageSignup\` is rendered correctly initially 1`] = `
 
 exports[`\`PageSignup\` is rendered correctly with all fields filled out 1`] = `
 <Translated
-  failed={false}
   onSignup={[Function]}
-  succeeded={false}
+  status="pending"
 >
   <StrippedPageSignup
-    failed={false}
     onSignup={[Function]}
-    succeeded={false}
+    status="pending"
     t={[Function]}
   >
     <Grid
@@ -251,6 +255,14 @@ exports[`\`PageSignup\` is rendered correctly with all fields filled out 1`] = `
             <h1>
               common:appName
             </h1>
+            <Translated
+              status="pending"
+            >
+              <StatusMessage
+                status="pending"
+                t={[Function]}
+              />
+            </Translated>
             <Segment
               stacked={true}
             >

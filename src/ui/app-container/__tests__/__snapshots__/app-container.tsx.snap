@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The \`AppContainer\` component is rendered as expected 1`] = `
+<AppContainer>
+  <div>
+    <Connect>
+      <StrippedErrors
+        onDismiss={[Function]}
+      />
+    </Connect>
+    <p>
+      Some Children
+    </p>
+    <div>
+      v0.0.0
+    </div>
+  </div>
+</AppContainer>
+`;

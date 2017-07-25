@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`\`mapStoreToProps\` infers an \`DisplayableError\` if present 1`] = `
+Object {
+  "error": Object {
+    "dismissed": false,
+    "error": undefined,
+    "message": "some message",
+    "origin": "api",
+  },
+  "onDismiss": [Function],
+}
+`;
+
+exports[`The \`Errors\` component is not rendered if no error is currently active 1`] = `
+<StrippedErrors
+  onDismiss={[Function]}
+/>
+`;
+
+exports[`The \`Errors\` component renders the current error 1`] = `
+<StrippedErrors
+  error={
+    Object {
+      "dismissed": false,
+      "message": "some message",
+      "origin": "api",
+    }
+  }
+  onDismiss={[Function]}
+>
+  <Modal
+    closeOnDimmerClick={true}
+    closeOnDocumentClick={false}
+    dimmer={true}
+    onClose={[Function]}
+    open={true}
+  >
+    <Portal
+      className="ui page modals dimmer transition visible active"
+      closeOnDocumentClick={false}
+      closeOnEscape={true}
+      closeOnRootNodeClick={true}
+      mountNode={
+        <body
+          class="dimmable dimmed"
+        >
+          <div
+            class="ui page modals dimmer transition visible active"
+          >
+            <div
+              data-reactroot=""
+              class="ui modal transition visible active"
+            >
+              <div
+                class="header"
+              >
+                An error occured
+              </div>
+              <div
+                class="content"
+              >
+                <div
+                  class="description"
+                >
+                  some message
+                </div>
+              </div>
+            </div>
+          </div>
+        </body>
+      }
+      onClose={[Function]}
+      onMount={[Function]}
+      onOpen={[Function]}
+      onUnmount={[Function]}
+      open={true}
+      openOnTriggerClick={true}
+    />
+  </Modal>
+</StrippedErrors>
+`;

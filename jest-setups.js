@@ -18,6 +18,9 @@ class LocalStorageMock {
     removeItem(key) {
         delete this.store[key];
     }
-};
+}
 
-window.localStorage = new LocalStorageMock;
+window.localStorage = new LocalStorageMock();
+window.requestAnimationFrame = (callback, element) => {
+    setTimeout(() => callback(10), 10);
+};

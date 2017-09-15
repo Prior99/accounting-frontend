@@ -1,0 +1,62 @@
+stages:
+  - test
+  - deploy
+
+build:
+  image: "node:7"
+  before_script:
+    - yarn install
+  script:
+    - yarn run build:release
+  stage: test
+  cache:
+    key: "$CI_PROJECT_ID"
+    paths:
+      - node_modules/
+  artifacts:
+    paths:
+      - dist/
+      - locales/
+      - index.html
+
+test:
+  image: "node:7"
+  before_script:
+    - yarn install
+  script:
+    - yarn run test
+  stage: test
+  cache:
+    key: "$CI_PROJECT_ID"
+    paths:
+      - node_modules/
+
+lint:
+  image: "node:7"
+  before_script:
+    - yarn install
+  script:
+    - yarn run lint:src
+    - yarn run lint:style
+  stage: test
+  cache:
+    key: "$CI_PROJECT_ID"
+    paths:
+      - node_modules/
+
+deploy:
+  image: "alpine:3.5"
+  before_script:
+    - apk --update add ansible git openssh python py2-pip rsync
+    - mkdir ~/.ssh
+    - echo "$SSH_PRIVATE_KEY_92K" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  script:
+    - ls -lAh
+    - ls -lAh dist
+    - cd deploy
+    - ansible-playbook nobooks.yml
+  dependencies:
+    - build
+  stage: deploy

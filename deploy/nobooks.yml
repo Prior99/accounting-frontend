@@ -1,0 +1,7 @@
+---
+
+- name: Nobooks
+  hosts: 92k
+  remote_user: accounting
+  roles:
+    - nobooks

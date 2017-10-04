@@ -20,6 +20,7 @@ class LocalStorageMock {
     }
 }
 
+baseUrl = "example.com";
 window.localStorage = new LocalStorageMock();
 window.requestAnimationFrame = (callback, element) => {
     setTimeout(() => callback(10), 10);

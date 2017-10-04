@@ -1,31 +1,23 @@
 import * as React from "react";
-import { connect } from "utils";
-import { Store } from "store";
-import * as style from "./signup.scss";
 import { Grid, Segment, Input, Button, Form } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import { routeLogin } from "routing";
+import * as routes from "routing";
 import { observable, action, computed } from "mobx";
-import { observer } from "mobx-react";
+import { observer, inject } from "mobx-react";
 import bind from "bind-decorator";
 import { validateEMail, validatePassword } from "utils";
 import { translate, InjectedTranslateProps } from "react-i18next";
 import { RequestStatus } from "request-status";
-import { StatusMessage } from "./status-message";
+import { StatusMessage } from "ui";
+import { ApiStore, SignupStore } from "store";
+import * as style from "./signup.scss";
 
-export interface PageSignupProps {
-    status: RequestStatus;
-    onSignup: (email: string, password: string) => {};
-}
-
-export function mapStoreToProps(store: Store): PageSignupProps {
-    const { status, onSignup } = store.signup;
-    return { status, onSignup };
-}
+type Props = { api?: ApiStore, signUp?: SignupStore} & InjectedTranslateProps;
 
 @translate(["signup", "common"])
+@inject("api", "signUp")
 @observer
-export class StrippedPageSignup extends React.Component<PageSignupProps & InjectedTranslateProps, undefined> {
+export class PageSignup extends React.PureComponent<Props> {
     @observable private email = "";
     @observable private password = "";
     @observable private repeat = "";
@@ -46,7 +38,7 @@ export class StrippedPageSignup extends React.Component<PageSignupProps & Inject
     }
 
     @bind
-    private handleSubmit() { this.props.onSignup(this.email, this.password); }
+    private handleSubmit() { this.props.signUp.doSignup(this.email, this.password); }
 
     @computed
     private get emailValid() { return validateEMail(this.email); }
@@ -58,12 +50,20 @@ export class StrippedPageSignup extends React.Component<PageSignupProps & Inject
     private get allValid() { return this.emailValid && this.passwordValid; }
 
     public render() {
-        const { t, status } = this.props;
+        const { t, api } = this.props;
         return (
             <Grid className={style.container} centered verticalAlign="middle" style={{ margin: 0 }}>
                 <Grid.Column stretched className={style.column}>
                     <h1 className={style.title}>{t("common:appName")}</h1>
-                    <StatusMessage status={status} />
+                    <StatusMessage
+                        status={api.requestStatus("doSignup")}
+                        successHeadline={t("signupSuccess.headline")}
+                        successContent={t("signupSuccess.content")}
+                        failHeadline={t("signupFailed.headline")}
+                        failContent={t("signupFailed.content")}
+                        inProgressHeadline={t("signupInProgress.headline")}
+                        inProgressContent={t("signupInProgress.content")}
+                    />
                     <Segment stacked>
                         <Form size="large" onSubmit={this.handleSubmit}>
                             <Form.Field>
@@ -108,12 +108,10 @@ export class StrippedPageSignup extends React.Component<PageSignupProps & Inject
                         </Form>
                     </Segment>
                     <Segment tertiary>
-                        {t("haveAccount")} <Link to={routeLogin()}>{t("login")}.</Link>
+                        {t("haveAccount")} <Link to={routes.login()}>{t("login")}.</Link>
                     </Segment>
                 </Grid.Column>
             </Grid>
         );
     }
 }
-
-export const PageSignup = connect(StrippedPageSignup, mapStoreToProps);

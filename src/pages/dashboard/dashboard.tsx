@@ -1,15 +1,8 @@
 import * as React from "react";
-import { connect, requireLogin } from "utils";
-import { Store } from "store";
+import { requireLogin } from "utils";
 
-export interface PageDashboardProps {
-}
-
-function mapStoreToProps(store: Store): PageDashboardProps {
-    return {};
-}
-
-export class StrippedPageDashboard extends React.Component<{}, undefined> {
+@requireLogin
+export class PageDashboard extends React.PureComponent<{}> {
     public render() {
         return (
             <div>
@@ -18,5 +11,3 @@ export class StrippedPageDashboard extends React.Component<{}, undefined> {
         );
     }
 }
-
-export const PageDashboard = requireLogin(connect(StrippedPageDashboard, mapStoreToProps));

@@ -6,3 +6,6 @@ password: "Password"
 loginFailed:
   headline: "Login Failed"
   content: "No user with this email address and password found."
+loginInProgress:
+  headline: "Logging in..."
+  content: "Login is in progress..."

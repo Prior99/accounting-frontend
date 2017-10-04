@@ -10,3 +10,6 @@ signupFailed:
 signupSuccess:
   headline: "Successfully signed up"
   content: "You successfullt signed up and may login now."
+signupInProgress:
+  headline: "Signing up..."
+  content: "Signup is in progress..."

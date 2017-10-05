@@ -30,7 +30,7 @@ interface Requests {
     };
 }
 
-@component({ name: "ApiStore" })
+@component
 export class ApiStore {
     @inject private browserHistory: History;
 

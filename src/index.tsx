@@ -20,7 +20,7 @@ function main() {
     ReactDOM.render(
         <div>
             <I18nextProvider i18n={i18n}>
-                <Router history={tsdi.get(History)}>
+                <Router history={tsdi.get("history")}>
                     <App />
                 </Router>
             </I18nextProvider>

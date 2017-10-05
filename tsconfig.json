@@ -10,7 +10,8 @@
         "jsx": "react",
         "outDir": "dist",
         "lib": ["es2016", "dom"],
-        "baseUrl": "./src"
+        "baseUrl": "./src",
+        "emitDecoratorMetadata": true
     },
     "include": [
         "typings/*",

@@ -3,7 +3,7 @@ import { createBrowserHistory, History } from "history";
 
 @component
 export class HistoryFactory {
-    @factory
+    @factory({ name: "history" })
     public createHistory(): History {
         return createBrowserHistory();
     }

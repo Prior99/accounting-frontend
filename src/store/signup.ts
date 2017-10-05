@@ -4,7 +4,7 @@ import { ApiStore } from ".";
 import { History } from "history";
 import { component, inject } from "tsdi";
 
-@component({ name: "SignupStore" })
+@component
 export class SignupStore {
     @inject private api: ApiStore;
 

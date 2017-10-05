@@ -27,3 +27,12 @@ baseUrl = "example.com";
 window.requestAnimationFrame = (callback, element) => {
     setTimeout(() => callback(10), 10);
 };
+
+beforeEach(() => {
+    tsdi = new TSDI();
+    tsdi.enableComponentScanner();
+});
+
+afterEach(() => {
+    tsdi.close();
+});

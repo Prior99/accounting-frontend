@@ -27,7 +27,7 @@ test("`requireLogin()` redirects to the `login()` route if not logged in", () =>
 });
 
 test("`requireLogin()` does not redirect if logged in", () => {
-    // tsdi.get(ApiStore).authToken = "some-auth-token";
+    tsdi.get(ApiStore).authToken = "some-auth-token";
     const current = renderer.render(<DecoratedComponent />);
     expect(current).toMatchSnapshot();
 });

@@ -5,18 +5,6 @@ import { RequestStatus } from "request-status";
 import { Errors } from "..";
 import { Provider } from "mobx-react";
 import { ApiStore } from "store";
-import { TSDI } from "tsdi";
-
-let tsdi: TSDI;
-
-beforeEach(() => {
-    tsdi = new TSDI();
-    tsdi.enableComponentScanner();
-});
-
-afterEach(() => {
-    tsdi.close();
-});
 
 test("\`Errors\` is rendered correctly with a network error", () => {
     tsdi.get(ApiStore).errors.push({ message: "some.message" });

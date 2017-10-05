@@ -1,101 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The \`AppContainer\` component is rendered as expected 1`] = `
-<Provider
-  api={
-    ApiStore {
-      "api": undefined,
-      "auth": AuthApi {
-        "basePath": "about://example.com",
-        "fetch": [Function],
-      },
-      "browserHistory": undefined,
-      "errors": Array [],
-      "info": InfoApi {
-        "basePath": "about://example.com",
-        "fetch": [Function],
-      },
-      "login": LoginApi {
-        "basePath": "about://example.com",
-        "fetch": [Function],
-      },
-      "member": MemberApi {
-        "basePath": "about://example.com",
-        "fetch": [Function],
-      },
-      "registration": RegistrationApi {
-        "basePath": "about://example.com",
-        "fetch": [Function],
-      },
-      "requests": Object {},
-      "teams": TeamsApi {
-        "basePath": "about://example.com",
-        "fetch": [Function],
-      },
-      "timer": TimerApi {
-        "basePath": "about://example.com",
-        "fetch": [Function],
-      },
-      "user": UserApi {
-        "basePath": "about://example.com",
-        "fetch": [Function],
-      },
-    }
-  }
->
-  <AppContainer>
+<AppContainer>
+  <div>
+    <Errors />
+    <p>
+      Some Children
+    </p>
     <div>
-      <inject-Errors-with-api>
-        <Errors
-          api={
-            ApiStore {
-              "api": undefined,
-              "auth": AuthApi {
-                "basePath": "about://example.com",
-                "fetch": [Function],
-              },
-              "browserHistory": undefined,
-              "errors": Array [],
-              "info": InfoApi {
-                "basePath": "about://example.com",
-                "fetch": [Function],
-              },
-              "login": LoginApi {
-                "basePath": "about://example.com",
-                "fetch": [Function],
-              },
-              "member": MemberApi {
-                "basePath": "about://example.com",
-                "fetch": [Function],
-              },
-              "registration": RegistrationApi {
-                "basePath": "about://example.com",
-                "fetch": [Function],
-              },
-              "requests": Object {},
-              "teams": TeamsApi {
-                "basePath": "about://example.com",
-                "fetch": [Function],
-              },
-              "timer": TimerApi {
-                "basePath": "about://example.com",
-                "fetch": [Function],
-              },
-              "user": UserApi {
-                "basePath": "about://example.com",
-                "fetch": [Function],
-              },
-            }
-          }
-        />
-      </inject-Errors-with-api>
-      <p>
-        Some Children
-      </p>
-      <div>
-        v0.0.0
-      </div>
+      v0.0.0
     </div>
-  </AppContainer>
-</Provider>
+  </div>
+</AppContainer>
 `;

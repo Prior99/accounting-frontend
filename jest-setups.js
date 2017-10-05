@@ -1,3 +1,5 @@
+const TSDI = require('tsdi').TSDI;
+
 class LocalStorageMock {
     constructor() {
         this.clear();
@@ -19,9 +21,9 @@ class LocalStorageMock {
         delete this.store[key];
     }
 }
+window.localStorage = new LocalStorageMock();
 
 baseUrl = "example.com";
-window.localStorage = new LocalStorageMock();
 window.requestAnimationFrame = (callback, element) => {
     setTimeout(() => callback(10), 10);
 };

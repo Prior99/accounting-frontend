@@ -5,7 +5,7 @@ import * as isomorphicFetch from "isomorphic-fetch";
 import { RequestStatus } from "../request-status";
 import { History } from "history";
 import * as routes from "../routing";
-import { Store } from "./store";
+import { component, inject } from "tsdi";
 
 declare var baseUrl: string;
 const prefixedBaseUrl = `${window.location.protocol}//${baseUrl}`;
@@ -30,7 +30,10 @@ interface Requests {
     };
 }
 
-export class ApiStore extends Store {
+@component({ name: "ApiStore" })
+export class ApiStore {
+    @inject private browserHistory: History;
+
     @observable public authToken: string;
     @observable public requests: Requests = {};
     @observable public errors: ApiError[] = [];
@@ -43,11 +46,6 @@ export class ApiStore extends Store {
     public teams = new Api.TeamsApi(this.wrappedFetch, prefixedBaseUrl);
     public timer = new Api.TimerApi(this.wrappedFetch, prefixedBaseUrl);
     public user = new Api.UserApi(this.wrappedFetch, prefixedBaseUrl);
-
-    constructor(browserHistory: History) {
-        super(undefined, browserHistory);
-        this.load();
-    }
 
     @computed
     public get loggedIn() {

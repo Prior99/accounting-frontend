@@ -2,11 +2,13 @@ import { observable, computed, action } from "mobx";
 import { bind } from "bind-decorator";
 import { ApiStore } from ".";
 import { History } from "history";
-import { Store } from "./store";
+import { component, inject } from "tsdi";
 
-export class SignupStore extends Store {
-    @observable
-    public signupResult: Boolean;
+@component({ name: "SignupStore" })
+export class SignupStore {
+    @inject private api: ApiStore;
+
+    @observable public signupResult: Boolean;
 
     @bind @action
     public async doSignup(email: string, password: string) {

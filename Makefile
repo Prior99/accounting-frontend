@@ -51,3 +51,9 @@ swagger-codegen-cli.jar:
 .PHONY: generated
 generated: swagger-codegen-cli.jar
 	java -jar swagger-codegen-cli.jar generate -i https://api.accounting.92k.de/swagger -l typescript-fetch -o generated/api/
+	rm generated/api/README.md
+	rm generated/api/git_push.sh
+	rm generated/api/package.json
+	rm generated/api/tsconfig.json
+	rm generated/api/tslint.json
+	rm generated/api/typings.json

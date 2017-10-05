@@ -5,38 +5,38 @@ import { Grid, Segment, Input, Button, Form } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import * as routes from "routing";
 import { observable, action, computed } from "mobx";
-import { observer, inject } from "mobx-react";
+import { observer } from "mobx-react";
+import { inject, external } from "tsdi";
 import bind from "bind-decorator";
 import { validateEMail, validatePassword } from "utils";
 import { translate, InjectedTranslateProps } from "react-i18next";
 import { RequestStatus } from "request-status";
 import { StatusMessage } from "ui";
 
-type Props = { api?: ApiStore } & InjectedTranslateProps;
-
 @translate(["login", "common"])
-@inject("api")
-@observer
-export class PageLogin extends React.PureComponent<Props> {
+@external @observer
+export class PageLogin extends React.PureComponent<InjectedTranslateProps> {
+    @inject private api: ApiStore;
+
     @observable private email = "";
     @observable private password = "";
 
     @bind @action private handleEMail({ target }: React.SyntheticInputEvent) { this.email = target.value; }
     @bind @action private handlePassword({ target }: React.SyntheticInputEvent) { this.password = target.value; }
-    @bind private handleSubmit() { this.props.api.doLogin(this.email, this.password); }
+    @bind private handleSubmit() { this.api.doLogin(this.email, this.password); }
 
     @computed private get emailValid() { return validateEMail(this.email); }
     @computed private get passwordValid() { return validatePassword(this.password); }
     @computed private get allValid() { return this.emailValid && this.passwordValid; }
 
     public render() {
-        const { api, t } = this.props;
+        const { t } = this.props;
         return (
             <Grid className={style.container} centered verticalAlign="middle" style={{ margin: 0 }}>
                 <Grid.Column stretched className={style.column}>
                     <h1 className={style.title}>{t("common:appName")}</h1>
                     <StatusMessage
-                        status={api.getRequestStatus("doLogin")}
+                        status={this.api.getRequestStatus("doLogin")}
                         failHeadline={t("loginFailed.headline")}
                         failContent={t("loginFailed.content")}
                         inProgressHeadline={t("loginInProgress.headline")}

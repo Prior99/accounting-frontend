@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`\`Errors\` is rendered correctly with a network error 1`] = `
+<Errors>
+  <Modal
+    closeOnDimmerClick={true}
+    closeOnDocumentClick={false}
+    dimmer={true}
+    onClose={[Function]}
+    open={true}
+  >
+    <Portal
+      className="ui page modals dimmer transition visible active"
+      closeOnDocumentClick={false}
+      closeOnEscape={true}
+      closeOnRootNodeClick={true}
+      mountNode={
+        <body
+          class="dimmable dimmed"
+        >
+          <div
+            class="ui page modals dimmer transition visible active"
+          >
+            <div
+              data-reactroot=""
+              class="ui modal transition visible active"
+            >
+              <div
+                class="header"
+              >
+                An error occured
+              </div>
+              <div
+                class="content"
+              >
+                <div
+                  class="description"
+                >
+                  some.message
+                </div>
+              </div>
+            </div>
+          </div>
+        </body>
+      }
+      onClose={[Function]}
+      onMount={[Function]}
+      onOpen={[Function]}
+      onUnmount={[Function]}
+      open={true}
+      openOnTriggerClick={true}
+    />
+  </Modal>
+</Errors>
+`;
+
+exports[`\`Errors\` is renders nothing without an error 1`] = `<Errors />`;

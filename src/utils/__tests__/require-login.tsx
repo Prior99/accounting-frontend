@@ -15,30 +15,19 @@ class SomeComponent extends React.PureComponent<{}> {
 
 let DecoratedComponent: React.ComponentClass<{}>;
 let renderer: ShallowRenderer;
-let apiStore: ApiStore;
 
 beforeEach(() => {
     renderer = createRenderer();
     DecoratedComponent = requireLogin(SomeComponent);
-    apiStore = new ApiStore(undefined);
 });
 
 test("`requireLogin()` redirects to the `login()` route if not logged in", () => {
-    apiStore.authToken = undefined;
-    const current = renderer.render(
-        <Provider api={apiStore}>
-            <DecoratedComponent />
-        </Provider>,
-    );
+    const current = renderer.render(<DecoratedComponent />);
     expect(current).toMatchSnapshot();
 });
 
 test("`requireLogin()` does not redirect if logged in", () => {
-    apiStore.authToken = "some-auth-token";
-    const current = renderer.render(
-        <Provider api={apiStore}>
-            <DecoratedComponent />
-        </Provider>,
-    );
+    // tsdi.get(ApiStore).authToken = "some-auth-token";
+    const current = renderer.render(<DecoratedComponent />);
     expect(current).toMatchSnapshot();
 });

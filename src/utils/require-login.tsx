@@ -1,23 +1,24 @@
 import * as React from "react";
 import { Redirect } from "react-router-dom";
-import { observer, inject } from "mobx-react";
+import { observer } from "mobx-react";
 import { ApiStore } from "store";
 import * as routes from "routing";
-import { omit } from "ramda";
+import { inject, external } from "tsdi";
 
 type ReactComponent<P> = React.StatelessComponent<P> | React.ComponentClass<P>;
 
 export function requireLogin<P, R extends React.ComponentClass<P | void>>(component: R): R {
-    @inject("api")
-    @observer
-    class RequireLogin extends React.Component<{ api: ApiStore } & P, undefined> {
+    @observer @external
+    class RequireLogin extends React.Component<P, undefined> {
+        @inject private api: ApiStore;
+
         public render() {
-            if (!this.props.api.loggedIn) {
+            if (!this.api.loggedIn) {
                 return (
                     <Redirect to={routes.login()} />
                 );
             }
-            return React.createElement(component as any, omit(["api"], this.props));
+            return React.createElement(component as any, this.props);
         }
     }
     return RequireLogin as any;

@@ -1,15 +1,15 @@
 import * as React from "react";
 import { Modal } from "semantic-ui-react";
-import { inject, observer } from "mobx-react";
+import { observer } from "mobx-react";
 import { ApiStore } from "store";
+import { inject, external } from "tsdi";
 
-type Props = { api?: ApiStore };
+@observer @external
+export class Errors extends React.PureComponent<{}> {
+    @inject private api: ApiStore;
 
-@inject("api")
-@observer
-export class Errors extends React.PureComponent<Props> {
     public render() {
-        const { latestError, doDismiss } = this.props.api;
+        const { latestError, doDismiss } = this.api;
         if (!latestError) {
             return null; // tslint:disable-line
         }

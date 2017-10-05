@@ -21,27 +21,13 @@ export class PageLogin extends React.PureComponent<Props> {
     @observable private email = "";
     @observable private password = "";
 
-    @bind @action
-    private handleEMail({ target }: React.SyntheticEvent<HTMLInputElement>) {
-        this.email = (target as HTMLInputElement).value;
-    }
+    @bind @action private handleEMail({ target }: React.SyntheticInputEvent) { this.email = target.value; }
+    @bind @action private handlePassword({ target }: React.SyntheticInputEvent) { this.password = target.value; }
+    @bind private handleSubmit() { this.props.api.doLogin(this.email, this.password); }
 
-    @bind @action
-    private handlePassword({ target }: React.SyntheticEvent<HTMLInputElement>) {
-        this.password = (target as HTMLInputElement).value;
-    }
-
-    @bind
-    private handleSubmit() { this.props.api.doLogin(this.email, this.password); }
-
-    @computed
-    private get emailValid() { return validateEMail(this.email); }
-
-    @computed
-    private get passwordValid() { return validatePassword(this.password); }
-
-    @computed
-    private get allValid() { return this.emailValid && this.passwordValid; }
+    @computed private get emailValid() { return validateEMail(this.email); }
+    @computed private get passwordValid() { return validatePassword(this.password); }
+    @computed private get allValid() { return this.emailValid && this.passwordValid; }
 
     public render() {
         const { api, t } = this.props;
@@ -50,7 +36,7 @@ export class PageLogin extends React.PureComponent<Props> {
                 <Grid.Column stretched className={style.column}>
                     <h1 className={style.title}>{t("common:appName")}</h1>
                     <StatusMessage
-                        status={api.requestStatus("doLogin")}
+                        status={api.getRequestStatus("doLogin")}
                         failHeadline={t("loginFailed.headline")}
                         failContent={t("loginFailed.content")}
                         inProgressHeadline={t("loginInProgress.headline")}

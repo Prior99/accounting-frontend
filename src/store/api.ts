@@ -90,7 +90,7 @@ export class ApiStore extends Store {
     }
 
     @bind
-    public save() {
+    private save() {
         const deserialized: LocalStorageApi = {
             storageVersion: softwareVersion,
             date: new Date().toString(),
@@ -101,12 +101,12 @@ export class ApiStore extends Store {
     }
 
     @bind
-    public clearStorage() {
+    private clearStorage() {
         localStorage.removeItem(localStorageIdentifier);
     }
 
     @bind
-    public load() {
+    private load() {
         const serialized = localStorage.getItem(localStorageIdentifier);
         if (serialized === null) { // tslint:disable-line
             return;
@@ -126,7 +126,7 @@ export class ApiStore extends Store {
         this.browserHistory.replace(routes.dashboard());
     }
 
-    public requestStatus(identifier: string): RequestStatus {
+    public getRequestStatus(identifier: string): RequestStatus {
         const request = this.requests[identifier];
         if (typeof request === "undefined") {
             return RequestStatus.NONE;
@@ -134,7 +134,7 @@ export class ApiStore extends Store {
         return request.requestStatus;
     }
 
-    public error(identifier: string): ApiError {
+    public getError(identifier: string): ApiError {
         const request = this.requests[identifier];
         if (typeof request === "undefined") {
             return undefined;

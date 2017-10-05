@@ -6,7 +6,7 @@
     "build": "webpack",
     "build:release": "webpack --config webpack.config-release.js",
     "start": "webpack-dev-server",
-    "lint:src": "tslint --format stylish --type-check --project tsconfig.json",
+    "lint:src": "tslint --format stylish --type-check --project tsconfig.json --exclude generated/**/*.ts",
     "lint:style": "stylelint --allow-empty-input src/**/*.scss",
     "test": "jest"
   },

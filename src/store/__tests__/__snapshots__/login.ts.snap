@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`The \`LoginStore\` has \`loggedIn\` \`true\` after performing a successfull login 1`] = `undefined`;

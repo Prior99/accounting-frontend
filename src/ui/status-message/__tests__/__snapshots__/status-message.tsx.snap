@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`\`StatusMessage\` is rendered correctly with the status being \`fail\` 1`] = `
+<StatusMessage
+  failContent="failed.content"
+  failHeadline="failed.headline"
+  inProgressContent="inProgress.content"
+  inProgressHeadline="inProgress.headline"
+  status="fail"
+  successContent="success.content"
+  successHeadline="success.headline"
+>
+  <Message
+    content="failed.content"
+    header="failed.headline"
+    icon="warning sign"
+    warning={true}
+  >
+    <div
+      className="ui icon warning message"
+    >
+      <Icon
+        as="i"
+        name="warning sign"
+      >
+        <i
+          aria-hidden="true"
+          className="warning sign icon"
+        />
+      </Icon>
+      <MessageContent>
+        <div
+          className="content"
+        >
+          <MessageHeader
+            content="failed.headline"
+          >
+            <div
+              className="header"
+            >
+              failed.headline
+            </div>
+          </MessageHeader>
+          <p>
+            failed.content
+          </p>
+        </div>
+      </MessageContent>
+    </div>
+  </Message>
+</StatusMessage>
+`;
+
+exports[`\`StatusMessage\` is rendered correctly with the status being \`in_progress\` 1`] = `
+<StatusMessage
+  failContent="failed.content"
+  failHeadline="failed.headline"
+  inProgressContent="inProgress.content"
+  inProgressHeadline="inProgress.headline"
+  status="in_progress"
+  successContent="success.content"
+  successHeadline="success.headline"
+>
+  <Message
+    icon={true}
+    success={true}
+  >
+    <div
+      className="ui icon success message"
+    >
+      <Icon
+        as="i"
+        loading={true}
+        name="circle notched"
+      >
+        <i
+          aria-hidden="true"
+          className="circle notched loading icon"
+        />
+      </Icon>
+      <MessageContent>
+        <div
+          className="content"
+        >
+          inProgress.content
+        </div>
+      </MessageContent>
+    </div>
+  </Message>
+</StatusMessage>
+`;
+
+exports[`\`StatusMessage\` is rendered correctly with the status being \`none\` 1`] = `
+<StatusMessage
+  failContent="failed.content"
+  failHeadline="failed.headline"
+  inProgressContent="inProgress.content"
+  inProgressHeadline="inProgress.headline"
+  status="none"
+  successContent="success.content"
+  successHeadline="success.headline"
+/>
+`;
+
+exports[`\`StatusMessage\` is rendered correctly with the status being \`success\` 1`] = `
+<StatusMessage
+  failContent="failed.content"
+  failHeadline="failed.headline"
+  inProgressContent="inProgress.content"
+  inProgressHeadline="inProgress.headline"
+  status="success"
+  successContent="success.content"
+  successHeadline="success.headline"
+>
+  <Message
+    content="success.content"
+    header="success.headline"
+    icon="checkmark"
+    success={true}
+  >
+    <div
+      className="ui icon success message"
+    >
+      <Icon
+        as="i"
+        name="checkmark"
+      >
+        <i
+          aria-hidden="true"
+          className="checkmark icon"
+        />
+      </Icon>
+      <MessageContent>
+        <div
+          className="content"
+        >
+          <MessageHeader
+            content="success.headline"
+          >
+            <div
+              className="header"
+            >
+              success.headline
+            </div>
+          </MessageHeader>
+          <p>
+            success.content
+          </p>
+        </div>
+      </MessageContent>
+    </div>
+  </Message>
+</StatusMessage>
+`;

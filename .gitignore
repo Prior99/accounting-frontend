@@ -3,3 +3,5 @@ dist/
 v*.*.*-*-*.tar.xz
 *.log
 coverage/
+generated/
+swagger-codegen-cli.jar

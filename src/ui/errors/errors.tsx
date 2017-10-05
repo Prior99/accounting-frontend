@@ -1,34 +1,29 @@
 import * as React from "react";
 import { Modal } from "semantic-ui-react";
-import { Store, DisplayableError } from "store";
-import { connect } from "utils";
+import { inject, observer } from "mobx-react";
+import { ApiStore } from "store";
 
-export interface ErrorsProps {
-    error?: DisplayableError;
-    onDismiss: () => void;
-}
+type Props = { api?: ApiStore };
 
-export function mapStoreToProps(store: Store) {
-    const { current: error, dismissCurrent } = store.error;
-    return { error, onDismiss: dismissCurrent };
-}
-
-export function StrippedErrors({ error, onDismiss }: ErrorsProps) {
-    if (!error) {
-        return null; // tslint:disable-line
+@inject("api")
+@observer
+export class Errors extends React.PureComponent<Props> {
+    public render() {
+        const { latestError, doDismiss } = this.props.api;
+        if (!latestError) {
+            return null; // tslint:disable-line
+        }
+        return (
+            <Modal onClose={doDismiss} open>
+                <Modal.Header>
+                    An error occured
+                </Modal.Header>
+                <Modal.Content>
+                    <Modal.Description>
+                        {latestError.message}
+                    </Modal.Description>
+                </Modal.Content>
+            </Modal>
+        );
     }
-    return (
-        <Modal onClose={onDismiss} open>
-            <Modal.Header>
-                An error occured
-            </Modal.Header>
-            <Modal.Content>
-                <Modal.Description>
-                    {error.message}
-                </Modal.Description>
-            </Modal.Content>
-        </Modal>
-    );
 }
-
-export const Errors = connect(StrippedErrors, mapStoreToProps);
